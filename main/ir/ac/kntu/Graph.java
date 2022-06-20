@@ -4,6 +4,8 @@ package main.ir.ac.kntu;
 // Java program to print connected components in
 // an undirected graph
 import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Graph
 {
     // A user define class to represent a graph.
@@ -11,7 +13,12 @@ public class Graph
     // Size of array will be V (number of vertices
     // in graph)
     int V;
+    HashMap<Integer,ArrayList<Integer>> cc =new HashMap<>();
+
+    public int numOfCC=0;
+
     ArrayList<ArrayList<Integer> > adjListArray;
+
 
     // constructor
     Graph(int V)
@@ -45,13 +52,17 @@ public class Graph
         // Mark the current node as visited and print it
         visited[v] = true;
         System.out.print(v + " ");
+        //number of vertices in each connected component
+        int numberOfVertices =0;
         // Recur for all the vertices
         // adjacent to this vertex
         for (int x : adjListArray.get(v)) {
             if (!visited[x])
                 DFSUtil(x, visited);
         }
+
     }
+
     void connectedComponents()
     {
         // Mark all the vertices as not visited
@@ -60,10 +71,19 @@ public class Graph
             if (!visited[v]) {
                 // print all reachable vertices
                 // from v
+
+                numOfCC++;
                 DFSUtil(v, visited);
                 System.out.println();
             }
         }
+    }
+    String solution(){
+        if(V % 2 !=0){
+            return ":(";
+        }
+        return "";
+
     }
 
     // Driver code
@@ -71,14 +91,18 @@ public class Graph
     {
         // Create a graph given in the above diagram
         Graph g = new Graph(
-                5); // 5 vertices numbered from 0 to 4
+                6); // 5 vertices numbered from 0 to 4
 
         g.addEdge(1, 0);
+        //g.addEdge(1,3);
         g.addEdge(2, 3);
         g.addEdge(3, 4);
         System.out.println(
                 "Following are connected components");
         g.connectedComponents();
+        System.out.println(g.numOfCC);
+        System.out.println(g.adjListArray);
+        System.out.println(g.cc);
     }
 }
 
