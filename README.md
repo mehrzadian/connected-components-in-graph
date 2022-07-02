@@ -9,7 +9,7 @@ Input:
   In next n-1 lines we add edges. 
  
  
-🤞 More Description:
+🤞 More Description (There is implenting describtion in Graph.java):
 
 🎄Tree{
 
