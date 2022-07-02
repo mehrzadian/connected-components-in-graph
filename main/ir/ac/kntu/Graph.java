@@ -96,6 +96,7 @@ class Graph
         Scanner scanner=new Scanner(System.in);
         int n = scanner.nextInt();
         int j=0;
+        //If number of vertices is odd, Question conditions can't be met.
         if (n%2!=0){
             j=1;
         }
@@ -106,6 +107,7 @@ class Graph
             int a;
             int b;
             System.out.println(g);
+            //Creating custom Graph
             for (int i = 0; i < n - 1; i++) {
                 a = scanner.nextInt();
                 b = scanner.nextInt();
